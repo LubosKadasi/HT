@@ -2,7 +2,10 @@
 
 document.querySelector('button').addEventListener('click', event => {
   console.log('click');
-  navigator.bluetooth.requestDevice({ filters: [{ name: ['MJ_HT_V1'] }] })
+  navigator.bluetooth.requestDevice({ 
+      filters: [{ name: ['MJ_HT_V1'] }] ,
+      optionalServices: ['226c0000-6476-4566-7562-66734470666d']
+    })
     .then(device => device.gatt.connect()
     )
     .then(server => server.getPrimaryService('226c0000-6476-4566-7562-66734470666d'))
